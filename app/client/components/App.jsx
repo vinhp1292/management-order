@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import actions from '../redux/actions';
-class App extends Component {
+import Dashboard from './Dashboard';
+
+class App extends React.Component {
   render() {
     return (
       <div>
-        <p>Management Orders</p>
+        <Dashboard/>
       </div>
-    );
+    )
   }
 }
 

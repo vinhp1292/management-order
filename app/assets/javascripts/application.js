@@ -12,4 +12,10 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require jquery-1.10.2
+//= require bootstrap.min
+//= require bootstrap-checkbox-radio
+//= require bootstrap-notify
+//= require chartist.min
+//= require paper-dashboard
 //= require_tree .

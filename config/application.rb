@@ -10,6 +10,9 @@ module CoffeeManager
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
+    VENDOR_CSS_PATH = Rails.root.join("vendor", "assets", "stylesheets")
+    config.assets.paths << Rails.root.join("app", "assets", "webfonts")
+    config.assets.paths << VENDOR_CSS_PATH
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

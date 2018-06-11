@@ -1,28 +1,36 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
+
+const ROOT_PATH = path.resolve(__dirname);
+const APP_PATH = path.resolve(ROOT_PATH, 'app', 'client');
+const BUILD_PATH = path.resolve(ROOT_PATH, 'app', 'assets', 'javascripts');
+
 module.exports = {
-  devtool: 'eval-source-map',
-  context: __dirname,
-  entry: ['./app/client/javascripts/main.js'],
-  output: {
-    path: path.join(__dirname, 'app', 'assets', 'javascripts'),
-    filename: 'bundle.js',
-    publicPath: '/assets'
-  },
+  entry: APP_PATH,
+
   resolve: {
-    extensions: ['.js']
+    extensions: ['.js', '.jsx']
   },
-  plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
-  ],
+
+  output: {
+    path: BUILD_PATH,
+    filename: 'bundle.js'
+  },
+
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         loader: 'babel-loader',
+        include: APP_PATH,
         exclude: /node_modules/
       }
     ]
-  }
+  },
+
+  plugins: [
+    new webpack.NoErrorsPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.EnvironmentPlugin({ NODE_ENV: 'development' })
+  ]
 };
